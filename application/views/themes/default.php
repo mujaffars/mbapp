@@ -32,6 +32,10 @@
         /** -- to here -- */
         ?>
 
+        <script type="text/javascript">
+            var siteUrl=<?php echo "'".site_url()."';"; ?>
+        </script>    
+
         <!-- Le styles -->
         <link href="<?php echo base_url(); ?>assets/themes/default/css/bootstrap.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/themes/default/hero_files/bootstrap-responsive.css" rel="stylesheet">
@@ -47,7 +51,7 @@
         <![endif]-->
 
         <!-- Le fav and touch icons -->
-        <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/themes/default/images/favicon.png" type="image/x-icon"/>
+        <!--<link rel="shortcut icon" href="<?php echo base_url(); ?>assets/themes/default/images/favicon.png" type="image/x-icon"/>-->
         <meta property="og:image" content="<?php echo base_url(); ?>assets/themes/default/images/facebook-thumb.png"/>
         <link rel="image_src" href="<?php echo base_url(); ?>assets/themes/default/images/facebook-thumb.png" />
         <style type="text/css">
@@ -121,16 +125,70 @@
             <div class="bg-light border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading">Mobile Shop </div>
                 <div class="list-group list-group-flush">
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-                    <a href="<?php echo site_url('examples/customers_management'); ?>" class="list-group-item list-group-item-action bg-light">Customers</</a>
-                    <a href="<?php echo site_url('examples/orders_management'); ?>" class="list-group-item list-group-item-action bg-light">Orders</a>
-                    <a href="<?php echo site_url('mobile/mobilecompany'); ?>" class="list-group-item list-group-item-action bg-light">Mobile</a>
-                    <a href="<?php echo site_url('examples/employees_management'); ?>" class="list-group-item list-group-item-action bg-light">Employee</a>
-                    <a href="<?php echo site_url('examples/multigrids'); ?>" class="list-group-item list-group-item-action bg-light">Multigrid</a>
+                    <!--<a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>-->
+                    <!--<a href="<?php echo site_url('examples/customers_management'); ?>" class="list-group-item list-group-item-action bg-light">Customers</</a>-->
+                    <!--<a href="<?php // echo site_url('examples/orders_management');  ?>" class="list-group-item list-group-item-action bg-light">Orders</a>-->
+                    <!--<a href="<?php echo site_url('mobile/mobilecompany'); ?>" class="list-group-item list-group-item-action bg-light">Mobile</a>-->
+                    <!--<a href="<?php echo site_url('examples/employees_management'); ?>" class="list-group-item list-group-item-action bg-light">Employee</a>-->
+                    <!--<a href="<?php echo site_url('examples/multigrids'); ?>" class="list-group-item list-group-item-action bg-light">Multigrid</a>-->
                     <?php foreach ($css_files as $file): ?>
                         <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
                     <?php endforeach; ?>
                 </div>
+
+                <div class="navcontainer">        
+                    <ul class="">
+                        <li><a class="list-group-item list-group-item-action bg-light" href="#">Dashboard</a></li>
+                        <li class="">
+                            <a tabindex="-1" class="list-group-item list-group-item-action bg-light" href="#">Customers</a>
+                            <ul class="clsUlCustomers">
+                                <li><a tabindex="-1" class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('examples/customers_management/add'); ?>">Add</a></li>
+                                <li><a class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('examples/customers_management'); ?>">List</a></li>
+                                <!--<li class=""><a href="#">Research</a></li>
+                                <li class="">
+                                    <a href="#">APL & Products</a>
+                                    <ul class="parent">
+                                        <li >
+                                            <a href="#">
+                                                Approved Product List                                        
+                                            </a>
+                                            <ul class="child">
+                                                <li >Platforms</li>
+                                            </ul>
+
+                                        </li>
+                                        <li ><a href="#">Model Portfolios</a></li>
+                                        <li ><a href="#">Non-approved Products</a></li>
+                                    </ul>
+                                </li>-->
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="list-group-item list-group-item-action bg-light" href="#">Orders</a>
+                            <ul class="clsUlOrders">
+                                <li><a tabindex="-1" class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('examples/orders_management/add'); ?>">Add Order</a></li>
+                                <li><a class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('examples/orders_management'); ?>">Orders List</a></li>                                
+                            </ul>
+                        </li>
+                        <li><a class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('mobile/mobilecompany'); ?>">Category</a></li>
+                        <li>
+                            <a class="list-group-item list-group-item-action bg-light" href="#">Employee</a>
+                            <ul class="clsUlEmployee">
+                                <li><a tabindex="-1" class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('examples/employees_management/add'); ?>">Add Employee</a></li>
+                                <li><a class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('examples/orders_management'); ?>">Employee List</a></li>                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action bg-light" href="#">Multigrid</a>
+                            <ul class="clsUlMultigrid">
+                                <li><a tabindex="-1" class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('examples/multigrids'); ?>">List</a></li>                             
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+
             </div>
             <!-- /#sidebar-wrapper -->
 
@@ -138,7 +196,7 @@
             <div class="container-fluid">
 
                 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                    <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+                    <!--<button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>-->
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -152,17 +210,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Link</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Dropdown
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+
+                            <div class="dropdown">
+                                <button onclick="myFunction()" class="dropbtn">Home</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <a href="#">Link 1</a>
+                                    <a href="#">Link 2</a>
+                                    <a href="#">Link 3</a>
                                 </div>
-                            </li>
+                            </div>
+
                         </ul>
                     </div>
                 </nav>
@@ -190,10 +247,10 @@
             <?php endforeach; ?>
             <!-- Menu Toggle Script -->
             <script>
-                $("#menu-toggle").click(function (e) {
-                    e.preventDefault();
-                    $("#wrapper").toggleClass("toggled");
-                });
+                                    $("#menu-toggle").click(function (e) {
+                                        e.preventDefault();
+                                        $("#wrapper").toggleClass("toggled");
+                                    });
             </script>
 
 
