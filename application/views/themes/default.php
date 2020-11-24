@@ -125,12 +125,6 @@
             <div class="bg-light border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading">Mobile Shop </div>
                 <div class="list-group list-group-flush">
-                    <!--<a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>-->
-                    <!--<a href="<?php echo site_url('examples/customers_management'); ?>" class="list-group-item list-group-item-action bg-light">Customers</</a>-->
-                    <!--<a href="<?php // echo site_url('examples/orders_management');  ?>" class="list-group-item list-group-item-action bg-light">Orders</a>-->
-                    <!--<a href="<?php echo site_url('mobile/mobilecompany'); ?>" class="list-group-item list-group-item-action bg-light">Mobile</a>-->
-                    <!--<a href="<?php echo site_url('examples/employees_management'); ?>" class="list-group-item list-group-item-action bg-light">Employee</a>-->
-                    <!--<a href="<?php echo site_url('examples/multigrids'); ?>" class="list-group-item list-group-item-action bg-light">Multigrid</a>-->
                     <?php foreach ($css_files as $file): ?>
                         <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
                     <?php endforeach; ?>
@@ -171,7 +165,14 @@
                                 <li><a class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('examples/orders_management'); ?>">Orders List</a></li>                                
                             </ul>
                         </li>
-                        <li><a class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('mobile/mobilecompany'); ?>">Category</a></li>
+                        <li>
+                            <a class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('mobile/mobilecompany'); ?>">Category</a>
+                            <ul class="clsUlCategory">
+                                <li><a tabindex="-1" class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('category/catlist'); ?>">Category List</a></li>
+                                <li><a class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('category/brandslist'); ?>">Brand List</a></li>
+                                <li><a class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('category/itemslist'); ?>">Items List</a></li>                                
+                            </ul>
+                        </li>
                         <li>
                             <a class="list-group-item list-group-item-action bg-light" href="#">Employee</a>
                             <ul class="clsUlEmployee">

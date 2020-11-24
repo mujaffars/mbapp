@@ -169,16 +169,31 @@ navcontainer li {
 .clsUlEmployee{
     margin-top: 184px;
 }
+.clsUlCategory{
+    margin-top: 138px;
+}
 
+.tblOrderAdd .edit_button{
+    float: left;
+}
+.tblOrderAdd .delete_button{
+    float: right;
+}
 .frmOrderAdd #orderItem{
     width: 300px;
 }
 .frmOrderAdd #itemPrice, .frmOrderAdd #itemDiscount{
     width: 100px;
 }
-.frmOrderAdd #itemQuantity{
+.frmOrderAdd #itemQuantity, .frmOrderAdd #itemGst{
     width: 80px;    
 }
 .frmOrderAdd #itemTotal{
     width: 180px;    
+}
+.frmOrderAdd .tblOrderAdd tbody tr{
+    height: 35px;
+}
+.frmOrderAdd .tblOrderAdd tbody .clsdynamictr td{
+    padding: 10px;
 }

@@ -11,7 +11,9 @@ class Examples extends CI_Controller {
         $this->load->database();
         $this->load->helper('url');
         $this->load->section('sidebar', 'ci_simplicity/sidebar');
-
+        
+        $this->load->model('Items');
+        
         $this->output->set_template('default');
         $this->load->library('grocery_CRUD');
 
@@ -88,19 +90,23 @@ class Examples extends CI_Controller {
 
     public function orders_management() {
         $crud = new grocery_CRUD();
-
+        
 //        $crud->set_relation('customerPhone', 'customers', '{contactLastName} {contactFirstName}');
 //        $crud->display_as('customerNumber', 'Customer');
 
         $crud->set_relation('customerNumber', 'customers', '{contactLastName} {contactFirstName}');
         $crud->display_as('customerNumber', 'Customer');
 
-        $crud->set_relation('mobile_id', 'mobile', '{name}');
-        $crud->display_as('mobile_id', 'Mobile');
+        $crud->set_relation('id', 'items', '{name}');
+        $crud->display_as('id', 'Mobile');
 
-        $crud->add_fields(array('mobile_id', 'mobileNo', 'customerName', 'orderDate'));
+        $returnData = $this->Items->getItemsForAuto();
+        $output = array('itemjson'=>json_encode($returnData));
+        $data['viewdata'] = $output;
+        
+//        $crud->add_fields(array('mobile_id', 'mobileNo', 'customerName', 'orderDate'));
 
-        $crud->edit_fields(array('mobile_id', 'mobileNo', 'customerName', 'orderDate'));
+//        $crud->edit_fields(array('mobile_id', 'mobileNo', 'customerName', 'orderDate'));
 
         $crud->unset_texteditor('comments', 'full_text');
 
