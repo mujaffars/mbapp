@@ -132,7 +132,7 @@
 
                 <div class="navcontainer">        
                     <ul class="">
-                        <li><a class="list-group-item list-group-item-action bg-light" href="#">Dashboard</a></li>
+                        <li><a class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('examples/offices_management'); ?>">Dashboard</a></li>
                         <li class="">
                             <a tabindex="-1" class="list-group-item list-group-item-action bg-light" href="#">Customers</a>
                             <ul class="clsUlCustomers">

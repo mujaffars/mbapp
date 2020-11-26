@@ -12,7 +12,8 @@ class Order extends CI_Model {
             "requiredDate" => date('Y-m-d h:i:s'),
             "shippedDate" => date('Y-m-d h:i:s'),
             "status" => "Complete",
-            "comments" => $data['comment']
+            "comments" => $data['comment'],
+            "customerNumber" => $data['customerNumber']
         );
 
         $flag = 1;
@@ -37,6 +38,17 @@ class Order extends CI_Model {
         return $resultdata;
     }
 
+    public function getOrderDetail($orderId){
+        $this->db->trans_start();
+
+        $this->db->select('od.orderNumber, od.orderDate, cs.*');
+        $this->db->from('orders as od');
+        $this->db->join('customers as cs', 'od.customerNumber = cs.customerNumber', 'left');
+        $this->db->where('od.orderNumber', $orderId);
+
+        $orderData = $this->db->get()->row();
+        return $orderData;
+    }
 }
 
 ?>

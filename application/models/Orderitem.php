@@ -16,12 +16,12 @@ class Orderitem extends CI_Model {
 
     public function addOrderItem($data) {
         $insertArray = array(
-            "order_id" => $data['order_id'],
-            "item_id" => $data['itemid'],
-            "price" => $data['itemprice'],
-            "quantity" => $data['itemquantity'],
-            "gst" => $data['itemgst'],
-            "discount" => $data['discount']
+            "order_id" => $data->order_id,
+            "item_id" => $data->itemid,
+            "price" => $data->itemprice,
+            "quantity" => $data->itemquantity,
+            "gst" => $data->itemgst,
+            "discount" => $data->discount
         );
 
         $flag = 1;
@@ -46,6 +46,18 @@ class Orderitem extends CI_Model {
         return $resultdata;
     }
 
+    public function getOrderItems($orderId) {
+        $this->db->trans_start();
+
+        $this->db->select('ot.*, it.name As itemname, bd.name As brandname');
+        $this->db->from('order_items as ot');
+        $this->db->join('items as it', 'ot.item_id = it.id', 'left');
+        $this->db->join('item_brand as bd', 'it.brand_id = bd.id', 'left');
+        $this->db->where('ot.order_id', $orderId);
+
+        $itemData = $this->db->get()->result();
+        return $itemData;
+    }
 }
 
 ?>

@@ -10,18 +10,22 @@ class Examples extends CI_Controller {
 
         $this->load->database();
         $this->load->helper('url');
-        $this->load->section('sidebar', 'ci_simplicity/sidebar');
-        
-        $this->load->model('Items');
-        
+//        $this->load->section('sidebar', 'ci_simplicity/sidebar');
+
         $this->output->set_template('default');
         $this->load->library('grocery_CRUD');
+
+        $this->load->model('Items');
 
         $this->load->js('assets/themes/default/js/jquery-1.9.1.min.js');
         $this->load->js('assets/themes/default/hero_files/bootstrap-transition.js');
         $this->load->js('assets/themes/default/hero_files/bootstrap-collapse.js');
     }
 
+    public function dashboard($output = null) {
+        $this->load->view('example.php', (array) $output);
+    }
+    
     public function _example_output($output = null) {
         $this->load->view('example.php', (array) $output);
     }
@@ -89,39 +93,42 @@ class Examples extends CI_Controller {
     }
 
     public function orders_management() {
+
+        if ($this->uri->segment(3) == 'read') {
+            $this->output->set_template('plain');
+            $this->load->css('assets/themes/default/css/formcustom.css');
+        } else if ($this->uri->segment(3) == 'add') {
+            $this->load->css('assets/themes/default/css/formcustom.css');
+        }
         $crud = new grocery_CRUD();
-        
+
 //        $crud->set_relation('customerPhone', 'customers', '{contactLastName} {contactFirstName}');
 //        $crud->display_as('customerNumber', 'Customer');
 
         $crud->set_relation('customerNumber', 'customers', '{contactLastName} {contactFirstName}');
         $crud->display_as('customerNumber', 'Customer');
 
-        $crud->set_relation('id', 'items', '{name}');
-        $crud->display_as('id', 'Mobile');
+        $crud->fields('');
+
+        $crud->columns(['orderNumber', 'orderDate', 'customerNumber']);
 
         $returnData = $this->Items->getItemsForAuto();
-        $output = array('itemjson'=>json_encode($returnData));
+        $output = array('itemjson' => json_encode($returnData));
         $data['viewdata'] = $output;
-        
-//        $crud->add_fields(array('mobile_id', 'mobileNo', 'customerName', 'orderDate'));
 
-//        $crud->edit_fields(array('mobile_id', 'mobileNo', 'customerName', 'orderDate'));
+        $crud->add_fields(array('mobile_id', 'mobileNo', 'customerName', 'orderDate'));
+        $crud->edit_fields(array('mobile_id', 'mobileNo', 'customerName', 'orderDate'));
 
         $crud->unset_texteditor('comments', 'full_text');
 
         $crud->set_table('orders');
         $crud->set_subject('Order');
 //        $crud->unset_add();
-        $crud->unset_delete();
+//        $crud->unset_delete();
+        $crud->unset_edit();
+        $crud->unset_clone();
 
         unset($_POST['customerName']);
-        if ($_POST) {
-//            echo '<pre>';
-//            print_r($_POST);
-//            echo '</pre>';
-//            exit;
-        }
         $output = $crud->render();
 
         $this->_example_output($output);

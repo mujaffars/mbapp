@@ -197,3 +197,57 @@ navcontainer li {
 .frmOrderAdd .tblOrderAdd tbody .clsdynamictr td{
     padding: 10px;
 }
+
+#frmOrderAdd .trHeadCustDetail{
+    text-align: center;
+}
+#frmOrderAdd #customerMobile{
+    width: 200px;
+}
+#frmOrderAdd #customerFirstName{
+    width: 200px;
+}
+#frmOrderAdd #customerLastName{
+    width: 200px;
+}
+#frmOrderAdd #customerAddress{
+    width: 260px;
+}
+
+.tblOfficeDtl{
+    width: 100% !important;
+    text-align: center;
+}
+
+.tblCustomerDtl{
+    width: 78%;
+    float: left;
+}
+
+.tblOrderDtl{
+    width: 20%;
+}
+
+.tblOrderItems{
+    width: 100% !important;
+    /*border: 2px solid black;*/
+}
+.tblOrderItems th, .tblOrderItems td{
+    border: 1px solid black;
+}
+#frmOrderDetail{
+    width: 100% !important;
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #section-to-print, #section-to-print * {
+    visibility: visible;
+  }
+  #section-to-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
