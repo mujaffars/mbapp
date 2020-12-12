@@ -13,6 +13,7 @@ class Category extends CI_Controller {
         
         $this->output->set_template('default');
         $this->load->library('grocery_CRUD');
+        $this->load->model('Uid');
         
         $this->load->js('assets/themes/default/js/jquery-1.9.1.min.js');
         $this->load->js('assets/themes/default/hero_files/bootstrap-transition.js');

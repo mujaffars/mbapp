@@ -16,7 +16,8 @@ class Examples extends CI_Controller {
         $this->load->library('grocery_CRUD');
 
         $this->load->model('Items');
-
+        $this->load->model('Uid');
+        
         $this->load->js('assets/themes/default/js/jquery-1.9.1.min.js');
         $this->load->js('assets/themes/default/hero_files/bootstrap-transition.js');
         $this->load->js('assets/themes/default/hero_files/bootstrap-collapse.js');
@@ -44,10 +45,10 @@ class Examples extends CI_Controller {
         try {
             $crud = new grocery_CRUD();
 
-            $crud->set_theme('datatables');
+//            $crud->set_theme('datatables');
             $crud->set_table('offices');
             $crud->set_subject('Office');
-            $crud->required_fields('city');
+            $crud->required_fields('name', 'city');
             $crud->columns('city', 'country', 'phone', 'addressLine1', 'postalCode');
 
             $output = $crud->render();
@@ -61,7 +62,7 @@ class Examples extends CI_Controller {
     public function employees_management() {
         $crud = new grocery_CRUD();
 
-        $crud->set_theme('datatables');
+//        $crud->set_theme('datatables');
         $crud->set_table('employees');
         $crud->set_relation('officeCode', 'offices', 'city');
         $crud->display_as('officeCode', 'Office City');

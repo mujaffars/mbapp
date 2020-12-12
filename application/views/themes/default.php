@@ -177,7 +177,14 @@
                             <a class="list-group-item list-group-item-action bg-light" href="#">Employee</a>
                             <ul class="clsUlEmployee">
                                 <li><a tabindex="-1" class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('examples/employees_management/add'); ?>">Add Employee</a></li>
-                                <li><a class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('examples/orders_management'); ?>">Employee List</a></li>                                
+                                <li><a class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('examples/employees_management'); ?>">Employee List</a></li>                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action bg-light" href="#">Inventory</a>
+                            <ul class="clsUlInventory">
+                                <li><a tabindex="-1" class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('inventory/stock_management/add'); ?>">Add Stock</a></li>
+                                <li><a class="list-group-item list-group-item-action bg-light" href="<?php echo site_url('inventory/stock_management'); ?>">Stock List</a></li>                                
                             </ul>
                         </li>
                         <li>

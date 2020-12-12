@@ -166,11 +166,14 @@ navcontainer li {
 .clsUlOrders{
     margin-top: 92px;
 }
+.clsUlCategory{
+    margin-top: 138px;
+}
 .clsUlEmployee{
     margin-top: 184px;
 }
-.clsUlCategory{
-    margin-top: 138px;
+.clsUlInventory{
+    margin-top: 230px;
 }
 
 .tblOrderAdd .edit_button{
@@ -237,6 +240,10 @@ navcontainer li {
 }
 #frmOrderDetail{
     width: 100% !important;
+}
+
+.fromUnlock{
+    text-align: center;
 }
 @media print {
   body * {
